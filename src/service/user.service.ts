@@ -1,10 +1,10 @@
 import { ChatId } from '@open-wa/wa-automate';
+import axios from 'axios';
+import { config } from 'dotenv';
 import { User } from './../models/user';
 import { ReqReturn } from './../models/utils';
-import axios from 'axios';
-import dotenv from 'dotenv';
 import { returnSanitizer } from './utils.service';
-dotenv.config();
+config();
 
 const http = axios.create({
   baseURL: process.env.BASEURL_BOTINFORS,
@@ -36,4 +36,32 @@ export async function updateUserStep(id: ChatId, step: number): Promise<boolean>
   }).catch((err) => {
     return false;
   });
+}
+
+export async function updateUserIntervention(
+  id: ChatId,
+  intervention: boolean
+): Promise<boolean> {
+  return http
+    .patch(`/${id}`, { intervention })
+    .then((response) => {
+      return true;
+    })
+    .catch((err) => {
+      return false;
+    });
+}
+
+export async function updateUserLastMessageTime(
+  id: ChatId,
+  lastMessageTime: Date
+): Promise<boolean> {
+  return http
+    .patch(`/${id}`, { lastMessageTime })
+    .then((response) => {
+      return true;
+    })
+    .catch((err) => {
+      return false;
+    });
 }

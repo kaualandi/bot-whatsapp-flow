@@ -1,8 +1,7 @@
-import { STATE, create, Client } from "@open-wa/wa-automate";
+import { Client, create, STATE } from "@open-wa/wa-automate";
+import { config } from "dotenv";
 import options from "./config/options";
 import msgHandler from "./msgHandler";
-import { config } from "dotenv";
-
 config();
 
 const start = async (client: Client) => {
