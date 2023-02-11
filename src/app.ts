@@ -1,7 +1,9 @@
 import { STATE, create, Client } from "@open-wa/wa-automate";
 import options from "./config/options";
 import msgHandler from "./msgHandler";
-require("dotenv").config();
+import { config } from "dotenv";
+
+config();
 
 const start = async (client: Client) => {
   console.log("\x1b[1;32m✓ USING:", process.env.USING, "\x1b[0m");
