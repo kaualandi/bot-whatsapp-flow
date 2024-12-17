@@ -7,7 +7,7 @@ export interface OnInit {
 }
 
 export interface WithChoices {
-  choices: Record<number, IChoice>;
+  choices: Record<string, IChoice>;
 }
 
 export type IStep = OnInit | WithChoices;
