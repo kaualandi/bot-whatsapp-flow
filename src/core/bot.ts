@@ -23,14 +23,13 @@ export class Bot {
       if (state === 'CONFLICT' || state === 'UNLAUNCHED') client.forceRefocus();
     });
 
-    client.onAnyMessage(async (message: Message) => {
+    client.onMessage(async (message: Message) => {
       console.log(
         '\x1b[1;36m[NOVA MENSAGEM]\x1b[0m',
         message.from,
         'disse',
         message.body
       );
-      if (message.from !== '5521995568755@c.us') return;
       await this.stepManager.processMessage(client, message);
     });
   }
