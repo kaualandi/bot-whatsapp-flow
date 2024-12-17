@@ -1,0 +1,31 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "ecmaVersion": 2020,
+        "project": ["tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "prettier",
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "no-useless-constructor": "off",
+        "dot-notation": "off",
+        "camelcase": "off",
+        "@typescript-eslint/explicit-member-accessibility": [
+          "error",
+          {
+            "accessibility": "explicit"
+          }
+        ]
+      }
+    }
+  ]
+}

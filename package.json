@@ -1,0 +1,47 @@
+{
+  "name": "bot-whatsapp-flow",
+  "version": "0.0.0",
+  "description": "Chatbot de WhatsApp com suporte a fluxo de conversa",
+  "main": "index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "tsc",
+    "lint": "eslint ./src --ext .ts",
+    "format": "prettier --write ./src"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kaualandi/bot-whatsapp-flow.git"
+  },
+  "keywords": [
+    "nodejs",
+    "chatbot"
+  ],
+  "author": "Kauã Landi <eu@kaualf.com>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/kaualandi/bot-whatsapp-flow/issues"
+  },
+  "homepage": "https://github.com/kaualandi/bot-whatsapp-flow#readme",
+  "devDependencies": {
+    "@types/json-server": "^0.14.7",
+    "@types/node": "^22.10.2",
+    "@typescript-eslint/eslint-plugin": "^8.18.1",
+    "@typescript-eslint/parser": "^8.18.1",
+    "eslint": "^9.17.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.4.2",
+    "prettier-eslint": "^16.3.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
+  },
+  "dependencies": {
+    "@open-wa/wa-automate": "^4.74.2",
+    "axios": "^1.7.9",
+    "dotenv": "^16.4.7",
+    "inversify": "^6.2.0",
+    "json-server": "^0.17.4",
+    "reflect-metadata": "^0.2.2"
+  }
+}
