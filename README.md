@@ -35,8 +35,7 @@ cp .env.example .env
 O que tem em sua env:
 
 - **JSON_SERVER_PORT**: Porta do servidor json-server, onde é salvo as informações dos usuários.
-
-Basta agora preencher os dados:
+- **EXPIRE_TIME**: Tempo de expiração da seção do usuário em milissegundos (o padrão é 2 minutos).
 
 ### Ambiente de Desenvolvimento
 
