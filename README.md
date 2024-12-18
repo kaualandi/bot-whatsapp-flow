@@ -138,6 +138,20 @@ Chamadas de API e outros serviços devem ser feitos na pasta `src/public/service
 
 O Axios é o cliente HTTP que está sendo utilizado, suas configurações estão no arquivo `src/config/axios.ts`.
 
+## O que está por vir?
+
+- [ ] Testes
+- [ ] Logs com Sentry
+- [ ] Migração para um banco real
+- [ ] Containarização
+- [ ] Documentação
+- [ ] Internacionalização (i18n)
+- [ ] CI/CD
+- [ ] Histórico de conversa
+- [ ] Humanização das mensagens com IA
+- [ ] Integração com outros serviços (n8n)
+- [ ] Feedback do usuário
+
 ## Autor
 
 👤 **Kauã Landi**

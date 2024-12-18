@@ -1,6 +1,6 @@
 {
   "name": "bot-whatsapp-flow",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Chatbot de WhatsApp com suporte a fluxo de conversa",
   "main": "index.ts",
   "scripts": {
