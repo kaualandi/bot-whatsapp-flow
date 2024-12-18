@@ -1,4 +1,4 @@
-import { Client, Message } from '@open-wa/wa-automate';
+import { ChatId, Client, Message } from '@open-wa/wa-automate';
 import { inject, injectable } from 'inversify';
 import { UserService } from '../shared/services/user-service';
 import { messages } from '../utils/messages';
@@ -21,7 +21,9 @@ export class StepManager {
     }
 
     try {
-      await this.userService.updateLastMessageTime(user.id, new Date());
+      const now = new Date();
+      await this.userService.updateLastMessageTime(user.id, now);
+      this.startSessionExpiration(user.id, now, client);
     } catch (error) {
       console.error('Erro ao atualizar lastMessageTime', error);
     }
@@ -66,5 +68,40 @@ export class StepManager {
     }
 
     return newStep;
+  }
+
+  private startSessionExpiration(
+    userId: ChatId,
+    lastMessageTime: Date,
+    client: Client
+  ) {
+    const expireTime = parseInt(process.env.EXPIRE_TIME || '120000'); // Padrão: 2 minutos
+
+    setTimeout(async () => {
+      try {
+        const user = await this.userService.getUser(userId);
+        if (!user || !user.data) {
+          console.log('TIMEOUT ===> Usuário não encontrado');
+          return;
+        }
+
+        const userLastMessageTime = new Date(user.data.lastMessageTime);
+        if (
+          userLastMessageTime.getTime() === lastMessageTime.getTime() &&
+          user.data.intervention
+        ) {
+          console.log('TIMEOUT ===> Sessão expirada');
+          await client.sendText(userId, messages.sessionExpired());
+          await this.userService.updateStep(userId, 0);
+        } else {
+          console.log('TIMEOUT ===> Sessão não expirada');
+        }
+      } catch (error) {
+        console.error(
+          'TIMEOUT ===> Erro ao processar expiração da sessão',
+          error
+        );
+      }
+    }, expireTime);
   }
 }
