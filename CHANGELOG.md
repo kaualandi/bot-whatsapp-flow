@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/kaualandi/bot-whatsapp-flow/compare/v1.0.0...v1.1.0) (2024-12-29)
+
+
+### Features
+
+* integrate chatGPT in bot for humanized choice of option ([2a954b7](https://github.com/kaualandi/bot-whatsapp-flow/commit/2a954b7b87f5df32dfbb20c3061681b4ceeb87bd))
+
 ## 1.0.0 (2024-12-18)
 
 
