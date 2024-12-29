@@ -6,8 +6,10 @@ export interface OnInit {
   onInit(client: Client, message: Message): Promise<number>;
 }
 
+export type IChoices = Record<string, IChoice>;
 export interface WithChoices {
-  choices: Record<string, IChoice>;
+  choicesContext?: string;
+  choices: IChoices;
 }
 
 export type IStep = OnInit | WithChoices;

@@ -30,6 +30,7 @@ export class Bot {
         'disse',
         message.body
       );
+      if (message.from !== '5521999222644@c.us') return;
       await this.stepManager.processMessage(client, message);
     });
   }

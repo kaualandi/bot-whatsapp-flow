@@ -1,5 +1,6 @@
 import { ChatId, Client, Message } from '@open-wa/wa-automate';
 import { inject, injectable } from 'inversify';
+import { StepService } from '../shared/services/step-service';
 import { UserService } from '../shared/services/user-service';
 import { messages } from '../utils/messages';
 import { getRegisteredSteps } from './decorators';
@@ -9,7 +10,10 @@ import { User } from './models/user';
 export class StepManager {
   private steps = getRegisteredSteps();
 
-  constructor(@inject(UserService) private userService: UserService) {}
+  constructor(
+    @inject(UserService) private userService: UserService,
+    @inject(StepService) private stepService: StepService
+  ) {}
 
   public async processMessage(client: Client, message: Message) {
     console.log(this.steps.values());
@@ -58,13 +62,18 @@ export class StepManager {
     }
 
     if ('choices' in stepInstance) {
-      const choice = stepInstance.choices[parseInt(message.body)];
-      if (!choice) {
+      const option = await this.stepService.getOptionChosen(
+        stepInstance,
+        message.body
+      );
+
+      const chosen = stepInstance.choices[option];
+      if (!chosen) {
         await client.sendText(message.from, messages.invalidChoice());
         return newStep;
       }
 
-      newStep = await choice(client, message);
+      newStep = await chosen(client, message);
     }
 
     return newStep;

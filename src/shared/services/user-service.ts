@@ -16,6 +16,7 @@ export class UserService {
       id,
       name,
       step: 0,
+      intervention: true,
       lastMessageTime: new Date(),
     });
   }

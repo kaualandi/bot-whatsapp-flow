@@ -48,6 +48,7 @@
     "dotenv": "^16.4.7",
     "inversify": "^6.2.0",
     "json-server": "^0.17.4",
+    "openai": "^4.77.0",
     "reflect-metadata": "^0.2.2"
   }
 }
